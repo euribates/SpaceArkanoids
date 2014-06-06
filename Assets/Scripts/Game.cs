@@ -9,7 +9,15 @@ public class Game : MonoBehaviour {
     static int score = 0;
 
     public static void add_score(int points) { score += points; }
-    public static void remove_live() { if (lives > 0) { lives--; } }
+    
+    public static void remove_live() { 
+        if (lives > 0) { 
+            lives--; 
+        } else {
+             Application.Quit();
+             lives--;
+        }
+    }
 
     void Start () {
         Debug.Log("Game starts");
@@ -29,6 +37,12 @@ public class Game : MonoBehaviour {
                 new Rect (10,10,100,30), 
                 "Lives: " + lives
                 );
+        GUI.Box (
+                new Rect (10,30,100,30), 
+                "Score: " + score
+                );
+
+
         }
 
     }

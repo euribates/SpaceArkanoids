@@ -10,7 +10,6 @@ public class Missile : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         engine_on = true;
-        Game.Game.add_score(3);
 	}
 
     void Play() {
@@ -28,10 +27,12 @@ public class Missile : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         Debug.Log("OnTriggerEnter starts");
         if (collider.CompareTag("defense")) {
+            space_sound.Play();
             Destroy(collider.gameObject);
             Destroy(this.gameObject);
         } else if (collider.CompareTag("ship")) {
             Game.Game.remove_live();
+
         }
     }
 }
