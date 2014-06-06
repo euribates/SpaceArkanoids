@@ -13,7 +13,7 @@ public class Game : MonoBehaviour {
 
     void Start () {
         Debug.Log("Game starts");
-        InvokeRepeating("launch_missile", 5, 5);    
+        InvokeRepeating("launch_missile", 1, 1);    
         }
         
     void launch_missile() {
@@ -21,13 +21,13 @@ public class Game : MonoBehaviour {
         int n = Random.Range(0, gos.Length-1);
         Invader invader = gos[n];
         Object new_missile = Instantiate(invader.weapon, invader.transform.position, Quaternion.identity);
-        Destroy(new_missile, 5);
+        Destroy(new_missile, 6);
         }
 
     void OnGUI() {
         GUI.Box (
                 new Rect (10,10,100,30), 
-                "Lives: "
+                "Lives: " + lives
                 );
         }
 

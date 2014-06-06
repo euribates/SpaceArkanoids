@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Missile : MonoBehaviour {
 
+    public AudioSource space_sound;
     bool engine_on;
     Game.Game game;
 
@@ -22,13 +23,15 @@ public class Missile : MonoBehaviour {
             transform.position += Vector3.back * 25f * Time.deltaTime;
             }	
         }
+   
 
     void OnTriggerEnter(Collider collider) {
+        Debug.Log("OnTriggerEnter starts");
         if (collider.CompareTag("defense")) {
             Destroy(collider.gameObject);
             Destroy(this.gameObject);
         } else if (collider.CompareTag("ship")) {
-            // Lives++
+            Game.Game.remove_live();
         }
     }
 }

@@ -25,4 +25,6 @@ public class Pad : MonoBehaviour {
 			right_light.enabled = false;
 			}
 		}
+
+  
 }
