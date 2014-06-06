@@ -17,7 +17,6 @@ public class Game : MonoBehaviour {
         }
         
     void launch_missile() {
-        Debug.Log("launch_missile starts");
         Invader[] gos = GameObject.FindObjectsOfType<Invader>();
         int n = Random.Range(0, gos.Length-1);
         Invader invader = gos[n];

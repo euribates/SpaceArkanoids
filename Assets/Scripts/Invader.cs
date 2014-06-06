@@ -9,7 +9,9 @@ public class Invader : MonoBehaviour {
 	// Use this for initialization
 
 
-
+    public int get_direction() {
+        return direction;
+        }
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.x > 188) {

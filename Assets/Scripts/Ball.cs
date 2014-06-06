@@ -42,9 +42,10 @@ public class Ball : MonoBehaviour {
                     explosion, 
                     col.collider.transform.position, 
                     Quaternion.identity) as GameObject;
-                ExplosionScript s = exp_clone.GetComponent<ExplosionScript>() as ExplosionScript;
-                Debug.Log(s);
-
+                if (col.collider.GetComponent<Invader>().get_direction() == -1) {
+                    ExplosionScript s = exp_clone.GetComponent<ExplosionScript>() as ExplosionScript;
+                    s.swith_direcion();
+                    }
                 }
             Destroy (col.collider.gameObject);
             }
