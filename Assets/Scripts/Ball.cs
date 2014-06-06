@@ -6,14 +6,14 @@ public class Ball : MonoBehaviour {
     public AudioSource laser_sound;
 	public float speed = 120.0f;
 	private Vector3 vel;
-    ParticleSystem explosion;
+    public GameObject explosion;
 
 	// Use this for initialization
 	void Start () {;
-        vel = new Vector3(Random.value, 0, Mathf.Abs(Random.value));
+        //vel = new Vector3(Random.value, 0, Mathf.Abs(Random.value));
+        vel = new Vector3(0, 0, 1);
         vel.Normalize();
         vel *= speed;
-        explosion = GameObject.Find("Explosion").particleSystem;
 		// vel = new Vector3 (speed, 0, -speed);
 	}
 	
@@ -38,9 +38,13 @@ public class Ball : MonoBehaviour {
         if (col.collider.CompareTag("invader") || col.collider.CompareTag("defense")) {
             if (col.collider.CompareTag("invader")) {
                 laser_sound.Play();
-                ParticleSystem exp = (ParticleSystem) Instantiate(explosion, col.collider.transform.position, Quaternion.identity);
-                exp.loop = false;
-                exp.Play();
+                GameObject exp_clone = Instantiate(
+                    explosion, 
+                    col.collider.transform.position, 
+                    Quaternion.identity) as GameObject;
+                ExplosionScript s = exp_clone.GetComponent<ExplosionScript>() as ExplosionScript;
+                Debug.Log(s);
+
                 }
             Destroy (col.collider.gameObject);
             }

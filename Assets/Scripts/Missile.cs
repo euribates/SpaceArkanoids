@@ -4,10 +4,12 @@ using System.Collections;
 public class Missile : MonoBehaviour {
 
     bool engine_on;
+    Game.Game game;
 
 	// Use this for initialization
 	void Start () {
         engine_on = true;
+        Game.Game.add_score(3);
 	}
 
     void Play() {
